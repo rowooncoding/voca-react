@@ -1,7 +1,8 @@
+import { useParams } from "react-router-dom";
 import dummy from "../database/data.json";
 export default function Day() {
-  const day = 1;
-  const wordList = dummy.words.filter((word) => word.day === day);
+  const { day } = useParams();
+  const wordList = dummy.words.filter((word) => word.day === +day);
   return (
     <>
       <h2>Day {day}</h2>
