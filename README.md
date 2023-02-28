@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# TIL
+## 동적인 url 제어
+- 동적인 Url을 제어할때는 경로에 콜론을 붙이면 된다
+```
+<Route path="/day/:day”
+```
+## useParams
+- url에 들어있는 숫자값을 얻을때는 usePrams를 사용한다
+## 라우터 v5 => v6 변동사항
+## switch → routes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## useHistory → useNavigate
 
-## Available Scripts
+- useNavigate 는 객체가 아니라 함수이기 때문에 그냥 할당해서 변수로 적으면 된다(abc.push 이렇게 안해도됨)
+- history.goBack() → navigate(-1) 숫자를 넣으면 된다 : +는 앞으로 가기 -1은 뒤로가기
 
-In the project directory, you can run:
+## useRouteMatch 삭제 → 대신에 상대경로를 사용하면 됨
 
-### `npm start`
+- link to = {match.url} → link to = “”
+- Link to = {`${match.url}/about`} → link to = “about”
+- Route path={match.path} → Route path={””}
+- Route path={`${match.url}/about`} → Route path=”about”
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Route에 children 이나 component 대신 element사용
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```jsx
+<Route>
+	<Header />
+</Route>
+```
 
-### `npm test`
+을
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```jsx
+<Route element={<Home />} />
+```
 
-### `npm run build`
+으로 수정
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## exact props 사라짐!!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> 서브 경로가 필요한 경우 path에 * 사용
+> 
+- exact의 속성을 기본적으로 가지고 있다!!! (지워도 무방하다)
+- exact 가 필요하지 않을때 뒤에 path의 경로 뒤에 /* 를 붙이면 된다
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## optional url 파라미터 사라짐!!!!
 
-### `npm run eject`
+> 필요하면 route 2개를 만들자
+> 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```jsx
+<Route path="./optional/:value?" element={<Optional />} />
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+을
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```jsx
+<Route path="./optional/:value" element={<Optional />} />
+<Route path="./optional" element={<Optional />} />
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+이렇게 경로를 두개 만들어 주면 된다
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# 번외1 : 서브라우트 구현
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Outlet
 
-### Code Splitting
+1. 서브라우트가 구현된 파일의 코드를 지운다
+2. App.js로 가서 붙여넣는다(만약 셀프클로징이 되어있다면 닫힘 태그를 적고 그 사이에 적는다)
+3. 원래 서브라우트가 구현되어있던 파일에(코드를 지웠던 곳) <Outlet />을 적는다
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# 번외2 : NavLink
 
-### Analyzing the Bundle Size
+## NavLink에 activeStyle, activeClassName 사라짐
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> NavLink란 현재 페이지가 활성화 되어있으면 링크에 또 다른 스타일을 적용하는것
+> 
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+isActive 라는 스타일이나 className을 넣어서 조건부 랜더링을 사용한다
