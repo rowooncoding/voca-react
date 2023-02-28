@@ -1,10 +1,11 @@
 import dummy from "../database/data.json";
 export default function Day() {
-  const wordList = dummy.words.filter((word) => word.day === 1);
+  const day = 1;
+  const wordList = dummy.words.filter((word) => word.day === day);
   return (
     <table>
       <tbody>
-        {dummy.words.map((word) => (
+        {wordList.map((word) => (
           <tr>
             <td>{word.eng}</td>
             <td>{word.kor}</td>
