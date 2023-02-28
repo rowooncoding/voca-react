@@ -6,7 +6,7 @@ export default function Day() {
     <table>
       <tbody>
         {wordList.map((word) => (
-          <tr>
+          <tr key={word.id}>
             <td>{word.eng}</td>
             <td>{word.kor}</td>
           </tr>
