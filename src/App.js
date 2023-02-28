@@ -12,9 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DayList />} />
           <Route path="/day/:day" element={<Day />} />
-          <Route>
-            <EmptyPage />
-          </Route>
+          <Route element={<EmptyPage />} />
         </Routes>
       </div>
     </BrowserRouter>
