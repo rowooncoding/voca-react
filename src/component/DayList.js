@@ -5,7 +5,6 @@ export default function DayList() {
       {dummy.days.map((day) => (
         <li key={day.id}>Day {day.day}</li>
       ))}
-      <li></li>
     </ul>
   );
 }
