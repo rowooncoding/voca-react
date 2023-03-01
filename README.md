@@ -1,12 +1,9 @@
-# 단어장 만들기 
-## 개요
-react를 사용하여 단어장을 만드는 repository 입니다.
-## 학습목표
-1. [v] 더미데이터 구현
-2. [v] map()반복문 사용
-3. [] 라우터 구현(버전6)
-4. [] Rest API 학습
-5. [] useEffect, fetch() 학습
-6. [] 커스텀 훅 학습
-7. [] CRUD 학습
-8. [] POST 학습
+# TIL
+## 조건부 랜더링
+토글 같은 경우 조건부 랜더링으로 처리하는 것이 편하다
+## json-server 설치법
+1. npm install -g json-server
+  1-1. 만약 먹지 않는다면  sudo npm i -g json-server
+2. 일기 전용 서버 열기
+  2-1. json-server --watch 경로 포트변호
+  
