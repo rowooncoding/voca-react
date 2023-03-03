@@ -1,3 +1,27 @@
-export default function CreatWord() {
-  return <form></form>;
+import useFetch from "../hooks/useFetch";
+
+export default function CreateWord() {
+  const days = useFetch("http://localhost:3001/days");
+  return (
+    <form>
+      <div className="input_area">
+        <label>Eng</label>
+        <input type="text" placeholder="computer" />
+      </div>
+      <div className="input_area">
+        <label>Kor</label>
+        <input type="text" placeholder="컴퓨터" />
+      </div>
+      <div className="input_area">
+        <label>Day</label>
+        <select>
+          {days.map((day) => (
+            <option key={day.id}>1</option>
+          ))}
+          <option>2</option>
+        </select>
+      </div>
+      <button></button>
+    </form>
+  );
 }

@@ -3,7 +3,7 @@ import Day from "./component/Day";
 import DayList from "./component/DayList";
 import Header from "./component/Header";
 import EmptyPage from "./component/EmptyPage";
-import CreatWord from "./component/CreateWord";
+import CreateWord from "./component/CreateWord";
 
 function App() {
   return (
@@ -13,9 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DayList />} />
           <Route path="/day/:day" element={<Day />} />
-          <Route path="/creat_word">
-            <CreatWord />
-          </Route>
+          <Route path="/create_word" element={<CreateWord />} />
           <Route element={<EmptyPage />} />
         </Routes>
       </div>
