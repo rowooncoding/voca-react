@@ -2,8 +2,12 @@ import useFetch from "../hooks/useFetch";
 
 export default function CreateWord() {
   const days = useFetch("http://localhost:3001/days");
+
+  function onSubmit(e) {
+    e.preventDefault();
+  }
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div className="input_area">
         <label>Eng</label>
         <input type="text" placeholder="computer" />
