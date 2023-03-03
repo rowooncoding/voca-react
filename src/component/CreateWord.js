@@ -16,12 +16,13 @@ export default function CreateWord() {
         <label>Day</label>
         <select>
           {days.map((day) => (
-            <option key={day.id}>1</option>
+            <option key={day.id} value={day.day}>
+              {day.day}
+            </option>
           ))}
-          <option>2</option>
         </select>
       </div>
-      <button></button>
+      <button>저장</button>
     </form>
   );
 }
