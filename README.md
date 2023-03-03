@@ -1,12 +1,32 @@
-# 단어장 만들기 
-## 개요
-react를 사용하여 단어장을 만드는 repository 입니다.
-## 학습목표
-1. [v] 더미데이터 구현
-2. [v] map()반복문 사용
-3. [v] 라우터 구현(버전6)
-4. [v] Rest API 학습
-5. [v] useEffect, fetch() 학습
-6. [v] 커스텀 훅 학습
-7. [] CRUD 학습
-8. [] POST 학습
+#TIL
+## 통신 하는 동안 비활성화 시키기
+```
+  const [isLoading, setIsLoading] = useState(false);
+
+  function onSubmit(e) {
+    e.preventDefault();
+    if (!isLoading) {
+      setIsLoading(true);
+      fetch(`http://localhost:3001/words/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day: dayRef.current.value,
+          eng: engRef.current.value,
+          kor: korRef.current.value,
+          isDone: false,
+        }),
+      }).then((res) => {
+        if (res.ok) {
+          alert("생성이 완료되었습니다.");
+          history(`/day/${dayRef.current.value}`);
+          setIsLoading(false);
+        }
+      });
+    }
+  }
+```
+useState를 하나 더 만들고
+불린 값으로 
