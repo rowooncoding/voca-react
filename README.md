@@ -8,5 +8,5 @@ react를 사용하여 단어장을 만드는 repository 입니다.
 4. [v] Rest API 학습
 5. [v] useEffect, fetch() 학습
 6. [v] 커스텀 훅 학습
-7. [] CRUD 학습
-8. [] POST 학습
+7. [v] CRUD 학습
+8. [v] POST 학습
